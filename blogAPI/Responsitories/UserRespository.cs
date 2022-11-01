@@ -32,7 +32,7 @@ namespace blogAPI.Responsitories
         return result;
         }
         public async Task< List<UserDto>> GetUsers(){
-            return await _context.Users.Select(u=>new UserDto(){
+            return await _context.Users.Select(user=>new UserDto(){
                 DisplayName = user.DisplayName,
                 Email = user.Email,
                 Phone = user.Phone,
@@ -46,11 +46,15 @@ namespace blogAPI.Responsitories
         public async Task<bool> DeleteUser(Guid Id){
             var user = await _context.Users.FirstOrDefaultAsync(user => user.Id == Id);
             if(user == null){
-                return null;
+                return false;
+               
             };
+             _context.Users.Remove(user);
+             await _context.SaveChangesAsync();
+             return true;
         }   
 
-        public UserDto EditUser(User user)
+        public async UserDto EditUser(User user)
         {
             var userExist = await _context.Users.FirstOrDefaultAsync(user => user.Id == Id);
             if(userExist == null){
