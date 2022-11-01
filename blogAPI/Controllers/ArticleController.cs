@@ -18,7 +18,7 @@ namespace blogAPI.Controllers
         public async Task<IActionResult> ListArticle()
         {
 
-            var listArticle = await _context.GetArticle();
+            var listArticle = await _context.GetArticles();
 
             return Ok(listArticle);
         }
@@ -28,15 +28,12 @@ namespace blogAPI.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = _context.InserArticle(new Models.Article()
+                var article = _context.InserArticle(new Models.Article()
                 {
                     Title = createArticleDto.Title,
                     Content = createArticleDto.Content,
-                    viewCount = createArticleDto.viewCount,
-                    AuthorID = createArticleDto.AuthorID,
-                    Category = createArticleDto.Category,
                 });
-                return Ok(Article);
+                return Ok(article);
             }else{
                 return BadRequest(ModelState.ErrorCount);
             }

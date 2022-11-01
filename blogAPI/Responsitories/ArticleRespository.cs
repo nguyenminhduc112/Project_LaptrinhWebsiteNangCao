@@ -25,9 +25,7 @@ namespace blogAPI.Responsitories
             {
                 Title = article.Title,
                 Content = article.Content,
-                AuthorId = article.AuthorId,
                 ID = article.Id,
-                Category = article.Category,
             };
             return result;
         }
@@ -37,11 +35,8 @@ namespace blogAPI.Responsitories
             {
                 Title = article.Title,
                 Content = article.Content,
-                AuthorId = article.AuthorId,
                 ID = article.Id,
-                Category = article.Category,
             }).ToListAsync();
-
         }
 
         public async Task<bool> DeleteArticle(Guid Id)
@@ -50,7 +45,6 @@ namespace blogAPI.Responsitories
             if (article == null)
             {
                 return false;
-
             };
             _context.Articles.Remove(article);
             await _context.SaveChangesAsync();
@@ -66,14 +60,11 @@ namespace blogAPI.Responsitories
             };
             articleExist.Title = article.Title;
             articleExist.Content = article.Content;
-            articleExist.Category = article.Category;
             await _context.SaveChangesAsync();
-
             return new ArticleDto()
             {
                 Title = article.Title,
                 Content = article.Content,
-                Category = article.Category
         };
     }
 }
