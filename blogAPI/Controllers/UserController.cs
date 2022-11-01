@@ -12,6 +12,16 @@ namespace blogAPI.Controllers
         {
             _context = context;
         }
+
+        [HttpGet]
+        public async Task<IActionResult> ListUser()
+        {
+
+            var listUser = await _userRepository.GetListUser();
+
+            return Ok(listUser);
+        }
+
         [HttpPost]
         public IActionResult addUser(CreateUserDto createUserDto)
         {
