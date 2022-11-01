@@ -2030,11 +2030,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\Project_LapTrinhWebsiteNangCao\\Project_LaptrinhWebsiteNangCao\\blogAPI\\blogAPI.csproj",
+      "projectUniqueName": "D:\\Project_LaptrinhWebsiteNangCao\\blogAPI\\blogAPI.csproj",
       "projectName": "blogAPI",
-      "projectPath": "d:\\Project_LapTrinhWebsiteNangCao\\Project_LaptrinhWebsiteNangCao\\blogAPI\\blogAPI.csproj",
+      "projectPath": "D:\\Project_LaptrinhWebsiteNangCao\\blogAPI\\blogAPI.csproj",
       "packagesPath": "C:\\Users\\LHUser\\.nuget\\packages\\",
-      "outputPath": "d:\\Project_LapTrinhWebsiteNangCao\\Project_LaptrinhWebsiteNangCao\\blogAPI\\obj\\",
+      "outputPath": "D:\\Project_LaptrinhWebsiteNangCao\\blogAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\LHUser\\AppData\\Roaming\\NuGet\\NuGet.Config"
