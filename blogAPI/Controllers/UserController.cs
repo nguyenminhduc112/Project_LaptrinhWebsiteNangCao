@@ -1,5 +1,6 @@
 using blogAPI.Data;
 using blogAPI.Dto.User;
+using blogAPI.Responsitories;
 using Microsoft.AspNetCore.Mvc;
 namespace blogAPI.Controllers
 {
@@ -7,8 +8,8 @@ namespace blogAPI.Controllers
     [Route("api/[controller]")]
     public class UserController : ControllerBase
     {
-        private readonly AppDbContext _context;
-        public UserController(AppDbContext context)
+        private readonly UserRespository _context;
+        public UserController(UserRespository context)
         {
             _context = context;
         }
@@ -17,7 +18,7 @@ namespace blogAPI.Controllers
         public async Task<IActionResult> ListUser()
         {
 
-            var listUser = await _userRepository.GetListUser();
+            var listUser = await _context.GetUsers();
 
             return Ok(listUser);
         }
@@ -27,7 +28,7 @@ namespace blogAPI.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = _context.Users.Add(new Models.User()
+                var user = _context.InserUser(new Models.User()
                 {
                     DisplayName = createUserDto.DisplayName,
                     Email = createUserDto.Email,
@@ -35,7 +36,6 @@ namespace blogAPI.Controllers
                     DateOfBirth = createUserDto.DateOfBirth,
                     Address = createUserDto.Address,
                 });
-                _context.SaveChanges();
                 return Ok(user);
             }else{
                 return BadRequest(ModelState.ErrorCount);

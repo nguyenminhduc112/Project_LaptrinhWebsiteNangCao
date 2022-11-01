@@ -17,6 +17,11 @@ namespace blogAPI.Data
             
         }
 
+        internal Task GetListUser()
+        {
+            throw new NotImplementedException();
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             var user = modelBuilder.Entity<User>();
