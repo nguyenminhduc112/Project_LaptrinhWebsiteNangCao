@@ -30,7 +30,49 @@ namespace blogAPI.Responsitories
                 Address = user.Address,
             };
         return result;
+        }
+        public async Task< List<UserDto>> GetUsers(){
+            return await _context.Users.Select(u=>new UserDto(){
+                DisplayName = user.DisplayName,
+                Email = user.Email,
+                Phone = user.Phone,
+                ID = user.Id,
+                DateOfBirth = user.DateOfBirth,
+                Address = user.Address,
+            }).AsNoTracking().ToListAsync();
+            
+        }
 
+        public async Task<bool> DeleteUser(Guid Id){
+            var user = await _context.Users.FirstOrDefaultAsync(user => user.Id == Id);
+            if(user == null){
+                return null;
+            };
+        }   
+
+        public UserDto EditUser(User user)
+        {
+            var userExist = await _context.Users.FirstOrDefaultAsync(user => user.Id == Id);
+            if(userExist == null){
+                return null;
+            };
+            userExist.DisplayName = user.DisplayName;
+            userExist.Email = user.Email;
+            userExist.Phone = user.Phone;
+            userExist.DateOfBirth = user.DateOfBirth;
+            userExist.Address = user.Address;
+            _context.SaveChanges();
+
+            var result = new UserDto()
+            {
+                DisplayName = user.DisplayName,
+                Email = user.Email,
+                Phone = user.Phone,
+                ID = user.Id,
+                DateOfBirth = user.DateOfBirth,
+                Address = user.Address,
+            };
+        return result;
         }
     }
 }

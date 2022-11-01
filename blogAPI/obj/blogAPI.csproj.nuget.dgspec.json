@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Project_LapTrinhWebsiteNangCao\\Project_LaptrinhWebsiteNangCao\\blogAPI\\blogAPI.csproj": {}
+    "D:\\Project_LaptrinhWebsiteNangCao\\blogAPI\\blogAPI.csproj": {}
   },
   "projects": {
-    "D:\\Project_LapTrinhWebsiteNangCao\\Project_LaptrinhWebsiteNangCao\\blogAPI\\blogAPI.csproj": {
+    "D:\\Project_LaptrinhWebsiteNangCao\\blogAPI\\blogAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Project_LapTrinhWebsiteNangCao\\Project_LaptrinhWebsiteNangCao\\blogAPI\\blogAPI.csproj",
+        "projectUniqueName": "D:\\Project_LaptrinhWebsiteNangCao\\blogAPI\\blogAPI.csproj",
         "projectName": "blogAPI",
-        "projectPath": "D:\\Project_LapTrinhWebsiteNangCao\\Project_LaptrinhWebsiteNangCao\\blogAPI\\blogAPI.csproj",
+        "projectPath": "D:\\Project_LaptrinhWebsiteNangCao\\blogAPI\\blogAPI.csproj",
         "packagesPath": "C:\\Users\\LHUser\\.nuget\\packages\\",
-        "outputPath": "D:\\Project_LapTrinhWebsiteNangCao\\Project_LaptrinhWebsiteNangCao\\blogAPI\\obj\\",
+        "outputPath": "D:\\Project_LaptrinhWebsiteNangCao\\blogAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\LHUser\\AppData\\Roaming\\NuGet\\NuGet.Config"
