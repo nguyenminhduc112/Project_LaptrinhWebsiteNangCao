@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Project_LaptrinhWebsiteNangCao\\blogAPI\\blogAPI.csproj": {}
+    "F:\\LHU\\Project_LaptrinhWebsiteNangCao\\blogAPI\\blogAPI.csproj": {}
   },
   "projects": {
-    "D:\\Project_LaptrinhWebsiteNangCao\\blogAPI\\blogAPI.csproj": {
+    "F:\\LHU\\Project_LaptrinhWebsiteNangCao\\blogAPI\\blogAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Project_LaptrinhWebsiteNangCao\\blogAPI\\blogAPI.csproj",
+        "projectUniqueName": "F:\\LHU\\Project_LaptrinhWebsiteNangCao\\blogAPI\\blogAPI.csproj",
         "projectName": "blogAPI",
-        "projectPath": "D:\\Project_LaptrinhWebsiteNangCao\\blogAPI\\blogAPI.csproj",
-        "packagesPath": "C:\\Users\\LHUser\\.nuget\\packages\\",
-        "outputPath": "D:\\Project_LaptrinhWebsiteNangCao\\blogAPI\\obj\\",
+        "projectPath": "F:\\LHU\\Project_LaptrinhWebsiteNangCao\\blogAPI\\blogAPI.csproj",
+        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
+        "outputPath": "F:\\LHU\\Project_LaptrinhWebsiteNangCao\\blogAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\LHUser\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -63,7 +63,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -75,7 +76,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

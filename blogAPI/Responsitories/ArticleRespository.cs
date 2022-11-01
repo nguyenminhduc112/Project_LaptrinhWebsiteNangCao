@@ -23,9 +23,10 @@ namespace blogAPI.Responsitories
 
             var result = new ArticleDto()
             {
+                ID = article.Id,
                 Title = article.Title,
                 Content = article.Content,
-                ID = article.Id,
+                AuthorId = article.AuthorId
             };
             return result;
         }
@@ -36,6 +37,7 @@ namespace blogAPI.Responsitories
                 Title = article.Title,
                 Content = article.Content,
                 ID = article.Id,
+                
             }).ToListAsync();
         }
 
