@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using blogAPI.Data;
 using blogAPI.Dto.User;
 using blogAPI.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace blogAPI.Responsitories
 {
@@ -32,14 +33,14 @@ namespace blogAPI.Responsitories
         return result;
         }
         public async Task< List<UserDto>> GetUsers(){
-            return await _context.Users.Select(user=>new UserDto(){
+            return await _context.Users.AsNoTracking().Select(user=>new UserDto(){
                 DisplayName = user.DisplayName,
                 Email = user.Email,
                 Phone = user.Phone,
                 ID = user.Id,
                 DateOfBirth = user.DateOfBirth,
                 Address = user.Address,
-            }).AsNoTracking().ToListAsync();
+            }).ToListAsync();
             
         }
 
@@ -54,7 +55,7 @@ namespace blogAPI.Responsitories
              return true;
         }   
 
-        public async UserDto EditUser(User user)
+        public async Task<UserDto>  EditUser (Guid Id, User user)
         {
             var userExist = await _context.Users.FirstOrDefaultAsync(user => user.Id == Id);
             if(userExist == null){
@@ -65,9 +66,9 @@ namespace blogAPI.Responsitories
             userExist.Phone = user.Phone;
             userExist.DateOfBirth = user.DateOfBirth;
             userExist.Address = user.Address;
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
-            var result = new UserDto()
+            return new UserDto()
             {
                 DisplayName = user.DisplayName,
                 Email = user.Email,
@@ -76,7 +77,6 @@ namespace blogAPI.Responsitories
                 DateOfBirth = user.DateOfBirth,
                 Address = user.Address,
             };
-        return result;
         }
     }
 }
