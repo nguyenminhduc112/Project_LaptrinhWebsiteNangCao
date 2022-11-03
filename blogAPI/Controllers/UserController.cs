@@ -38,13 +38,15 @@ namespace blogAPI.Controllers
                     Address = createUserDto.Address,
                 });
                 return Ok(user);
-            }else{
+            }
+            else
+            {
                 return BadRequest(ModelState.ErrorCount);
             }
         }
 
         [HttpPatch]
-        public async Task<IActionResult> editUserAsync(Guid Id ,PutUserDto putUserDto)
+        public async Task<IActionResult> editUserAsync(Guid Id, PutUserDto putUserDto)
         {
             if (ModelState.IsValid)
             {
@@ -64,5 +66,11 @@ namespace blogAPI.Controllers
                 return BadRequest(ModelState.ErrorCount);
             }
         }
+        [HttpDelete]
+        public async Task<IActionResult> DeleteUser([FromQuery] Guid id)
+        {
+            return Ok(await _context.DeleteUser(id));
+        }
+
     }
 }
