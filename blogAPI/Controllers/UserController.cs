@@ -1,5 +1,6 @@
 using blogAPI.Data;
 using blogAPI.Dto.User;
+using blogAPI.Models;
 using blogAPI.Responsitories;
 using Microsoft.AspNetCore.Mvc;
 namespace blogAPI.Controllers
@@ -38,6 +39,28 @@ namespace blogAPI.Controllers
                 });
                 return Ok(user);
             }else{
+                return BadRequest(ModelState.ErrorCount);
+            }
+        }
+
+        [HttpPatch]
+        public async Task<IActionResult> editUserAsync(Guid Id ,PutUserDto putUserDto)
+        {
+            if (ModelState.IsValid)
+            {
+                var userNew = new User()
+                {
+                    DisplayName = putUserDto.DisplayName,
+                    Email = putUserDto.Email,
+                    Phone = putUserDto.Phone,
+                    Address = putUserDto.Address,
+                    DateOfBirth = putUserDto.DateOfBirth
+                };
+                return Ok(await _context.EditUser(Id, userNew));
+
+            }
+            else
+            {
                 return BadRequest(ModelState.ErrorCount);
             }
         }
