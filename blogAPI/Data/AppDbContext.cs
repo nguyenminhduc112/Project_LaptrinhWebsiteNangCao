@@ -54,9 +54,9 @@ namespace blogAPI.Data
             .WithMany(u => u.Articles)
             .HasForeignKey(a => a.AuthorId).OnDelete(DeleteBehavior.NoAction);
 
-            article.HasOne<Category>(a => a.Category)
-            .WithMany(u => u.Articles)
-            .HasForeignKey(a => a.CategoryId).IsRequired().OnDelete(DeleteBehavior.NoAction);
+            // article.HasOne<Category>(a => a.Category)
+            // .WithMany(u => u.Articles)
+            // .HasForeignKey(a => a.CategoryId).IsRequired().OnDelete(DeleteBehavior.NoAction);
 
             // article.HasMany<Tag>(a => a.Tags)
             // .WithMany(u => u.Articles)
@@ -71,15 +71,15 @@ namespace blogAPI.Data
             // =====================================================================
 
             // Tạo bảng tblCategory
-            category.ToTable("tblCategory");
+            // category.ToTable("tblCategory");
             //
-            category.HasMany<Article>(c => c.Articles)
-            .WithOne(a => a.Category)
-            .HasForeignKey(c => c.CategoryId);
+            // category.HasMany<Article>(c => c.Articles)
+            // .WithOne(a => a.Category)
+            // .HasForeignKey(c => c.CategoryId);
 
-            category.HasOne<User>(c => c.CreatedBy)
-            .WithMany(u => u.Categories)
-            .HasForeignKey(c => c.CreatedById);
+            // category.HasOne<User>(c => c.CreatedBy)
+            // .WithMany(u => u.Categories)
+            // .HasForeignKey(c => c.CreatedById);
             // =====================================================================
 
             // Tạo bảng tblTag
@@ -94,9 +94,9 @@ namespace blogAPI.Data
             .WithMany(u => u.Comments)
             .HasForeignKey(c => c.AuthorId);
 
-            comment.HasOne<Article>(c => c.Article)
-            .WithMany(a => a.Comments)
-            .HasForeignKey(c => c.ArticleId);
+            // comment.HasOne<Article>(c => c.Article)
+            // .WithMany(a => a.Comments)
+            // .HasForeignKey(c => c.ArticleId);
 
             modelBuilder.Entity<ArticleTag>(entity=>{
                 entity.ToTable("tblArticleTag");

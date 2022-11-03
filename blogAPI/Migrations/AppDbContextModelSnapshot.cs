@@ -31,9 +31,6 @@ namespace blogAPI.Migrations
                     b.Property<Guid>("AuthorId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("CategoryId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Content")
                         .HasColumnType("nvarchar(max)");
 
@@ -53,8 +50,6 @@ namespace blogAPI.Migrations
 
                     b.HasIndex("AuthorId");
 
-                    b.HasIndex("CategoryId");
-
                     b.ToTable("tblArticle", (string)null);
                 });
 
@@ -65,6 +60,9 @@ namespace blogAPI.Migrations
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("LikeAt")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("ArticleId", "UserId");
 
@@ -110,7 +108,7 @@ namespace blogAPI.Migrations
 
                     b.HasIndex("CreatedById");
 
-                    b.ToTable("tblCategory", (string)null);
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("blogAPI.Models.Comment", b =>
@@ -203,15 +201,7 @@ namespace blogAPI.Migrations
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("blogAPI.Models.Category", "Category")
-                        .WithMany("Articles")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
                     b.Navigation("Author");
-
-                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("blogAPI.Models.ArticleLiker", b =>
@@ -289,11 +279,6 @@ namespace blogAPI.Migrations
                     b.Navigation("ArticleTags");
 
                     b.Navigation("Comments");
-                });
-
-            modelBuilder.Entity("blogAPI.Models.Category", b =>
-                {
-                    b.Navigation("Articles");
                 });
 
             modelBuilder.Entity("blogAPI.Models.Tag", b =>

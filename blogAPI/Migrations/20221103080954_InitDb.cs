@@ -42,7 +42,7 @@ namespace blogAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "tblCategory",
+                name: "Categories",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -53,9 +53,9 @@ namespace blogAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_tblCategory", x => x.Id);
+                    table.PrimaryKey("PK_Categories", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_tblCategory_tblUser_CreatedById",
+                        name: "FK_Categories_tblUser_CreatedById",
                         column: x => x.CreatedById,
                         principalTable: "tblUser",
                         principalColumn: "Id",
@@ -71,18 +71,12 @@ namespace blogAPI.Migrations
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     viewCount = table.Column<int>(type: "int", nullable: false),
                     AuthorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_tblArticle", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_tblArticle_tblCategory_CategoryId",
-                        column: x => x.CategoryId,
-                        principalTable: "tblCategory",
-                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_tblArticle_tblUser_AuthorId",
                         column: x => x.AuthorId,
@@ -95,7 +89,8 @@ namespace blogAPI.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ArticleId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    ArticleId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LikeAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -167,14 +162,14 @@ namespace blogAPI.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Categories_CreatedById",
+                table: "Categories",
+                column: "CreatedById");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_tblArticle_AuthorId",
                 table: "tblArticle",
                 column: "AuthorId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_tblArticle_CategoryId",
-                table: "tblArticle",
-                column: "CategoryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_tblArticleLiker_UserId",
@@ -185,11 +180,6 @@ namespace blogAPI.Migrations
                 name: "IX_tblArticleTag_TagId",
                 table: "tblArticleTag",
                 column: "TagId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_tblCategory_CreatedById",
-                table: "tblCategory",
-                column: "CreatedById");
 
             migrationBuilder.CreateIndex(
                 name: "IX_tblComment_ArticleId",
@@ -205,6 +195,9 @@ namespace blogAPI.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Categories");
+
+            migrationBuilder.DropTable(
                 name: "tblArticleLiker");
 
             migrationBuilder.DropTable(
@@ -218,9 +211,6 @@ namespace blogAPI.Migrations
 
             migrationBuilder.DropTable(
                 name: "tblArticle");
-
-            migrationBuilder.DropTable(
-                name: "tblCategory");
 
             migrationBuilder.DropTable(
                 name: "tblUser");

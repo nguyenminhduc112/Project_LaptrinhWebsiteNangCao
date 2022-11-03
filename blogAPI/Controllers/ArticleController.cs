@@ -8,17 +8,17 @@ namespace blogAPI.Controllers
     [Route("api/[controller]")]
     public class ArticleController : ControllerBase
     {
-        private readonly ArticleRespository _ArticleRespository;
+        private readonly ArticleRespository _context;
         public ArticleController(ArticleRespository context)
         {
-            _ArticleRespository = context;
+            _context = context;
         }
 
         [HttpGet]
         public async Task<IActionResult> ListArticle()
         {
 
-            var listArticle = await _ArticleRespository.GetArticles();
+            var listArticle = await _context.GetArticles();
 
             return Ok(listArticle);
         }
@@ -28,7 +28,7 @@ namespace blogAPI.Controllers
         {
             if (ModelState.IsValid)
             {
-                var article = _ArticleRespository.InserArticle(new Models.Article()
+                var article = _context.InserArticle(new Models.Article()
                 {
                     Title = createArticleDto.Title,
                     Content = createArticleDto.Content,

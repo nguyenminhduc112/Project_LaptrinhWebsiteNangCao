@@ -11,6 +11,7 @@ builder.Services.AddDbContext<AppDbContext>(Options=>{
     Options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 builder.Services.AddScoped<UserRespository>();
+builder.Services.AddScoped<ArticleRespository>();
 builder.Services.AddControllers();
 var policyName = "myAppPolicy";
 builder.Services.AddCors(options=>{

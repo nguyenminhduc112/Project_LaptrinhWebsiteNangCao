@@ -12,7 +12,7 @@ using blogAPI.Data;
 namespace blogAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220930071737_InitDb")]
+    [Migration("20221103080954_InitDb")]
     partial class InitDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,9 +31,6 @@ namespace blogAPI.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("AuthorId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("CategoryId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Content")
@@ -55,8 +52,6 @@ namespace blogAPI.Migrations
 
                     b.HasIndex("AuthorId");
 
-                    b.HasIndex("CategoryId");
-
                     b.ToTable("tblArticle", (string)null);
                 });
 
@@ -67,6 +62,9 @@ namespace blogAPI.Migrations
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("LikeAt")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("ArticleId", "UserId");
 
@@ -112,7 +110,7 @@ namespace blogAPI.Migrations
 
                     b.HasIndex("CreatedById");
 
-                    b.ToTable("tblCategory", (string)null);
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("blogAPI.Models.Comment", b =>
@@ -205,15 +203,7 @@ namespace blogAPI.Migrations
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("blogAPI.Models.Category", "Category")
-                        .WithMany("Articles")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
                     b.Navigation("Author");
-
-                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("blogAPI.Models.ArticleLiker", b =>
@@ -291,11 +281,6 @@ namespace blogAPI.Migrations
                     b.Navigation("ArticleTags");
 
                     b.Navigation("Comments");
-                });
-
-            modelBuilder.Entity("blogAPI.Models.Category", b =>
-                {
-                    b.Navigation("Articles");
                 });
 
             modelBuilder.Entity("blogAPI.Models.Tag", b =>

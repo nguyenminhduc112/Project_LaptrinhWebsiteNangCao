@@ -34,10 +34,10 @@ namespace blogAPI.Responsitories
         {
             return await _context.Articles.AsNoTracking().Select(article => new ArticleDto()
             {
+                ID = article.Id,
                 Title = article.Title,
                 Content = article.Content,
-                ID = article.Id,
-                
+                AuthorId = article.AuthorId,
             }).ToListAsync();
         }
 

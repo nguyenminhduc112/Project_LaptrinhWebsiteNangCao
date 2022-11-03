@@ -10,6 +10,6 @@ namespace blogAPI.Models
         public String name { get; set; }
         public Guid CreatedById { get; set; }
         public User CreatedBy  { get; set; }
-        public ICollection<Article> Articles { get; set; } // 1 category có nhiều article
+        // public ICollection<Article> Articles { get; set; } // 1 category có nhiều article
     }
 }
