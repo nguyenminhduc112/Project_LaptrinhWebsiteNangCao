@@ -12,6 +12,7 @@ builder.Services.AddDbContext<AppDbContext>(Options=>{
 });
 builder.Services.AddScoped<UserRespository>();
 builder.Services.AddScoped<ArticleRespository>();
+builder.Services.AddScoped<CommentRespository>();
 builder.Services.AddControllers();
 var policyName = "myAppPolicy";
 builder.Services.AddCors(options=>{

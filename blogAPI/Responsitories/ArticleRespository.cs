@@ -40,7 +40,15 @@ namespace blogAPI.Responsitories
                 AuthorId = article.AuthorId,
             }).ToListAsync();
         }
-
+        // public async Task<ArticleDto> GetUser(Guid Id)
+        // {
+        //     var article = await _context.Articles.FirstOrDefaultAsync(article => article.Id == Id);
+        //     if (article == null)
+        //     {
+        //         return null;
+        //     };
+        //     return article;
+        // }
         public async Task<bool> DeleteArticle(Guid Id)
         {
             var article = await _context.Articles.FirstOrDefaultAsync(article => article.Id == Id);
