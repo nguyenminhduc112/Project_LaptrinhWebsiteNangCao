@@ -1,6 +1,6 @@
 ## NHÓM NHỮNG CON CÁ MẬP - CHỦ ĐỀ SHARK BLOG
 >
-## Danh sách thành Viên
+**Danh sách thành Viên**
 >
 >Nguyễn Minh Đức - 119000325 
 >
